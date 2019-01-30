@@ -2,7 +2,7 @@
 
 const Hapi = require('hapi');
 const validateToken = require('./authentication-token');
-const plugins = require('./plugin-register');
+const Joi = require('joi');
 const AuthBearer = require('hapi-auth-bearer-token');
 
 async function initServer() {
@@ -15,16 +15,45 @@ async function initServer() {
 	};
 	// Server configurado.
 	const server = Hapi.server(options);
-	// Registra todos las rutas
-	await server.register([
-		...plugins,
-		{
-			// Registering Bearer authentication
-			plugin: AuthBearer,
-		}
-	]);
+
+	// Configura la autheticación
+	await server.register(AuthBearer);
 	server.auth.strategy('token', 'bearer-access-token', {
-		validateFunction: validateToken,
+		validate: validateToken,
+	});
+
+	// Agregando servicios.
+	server.route({
+		method: 'POST',
+		options: {
+			auth: false,
+			validate: {
+				payload: {
+					number: Joi.number().integer().required(),
+				},
+			},
+		},
+		path: '/post-public',
+		handler: function (request, h) {
+			return request.payload;
+		}
+	});
+
+	server.route({
+		method: 'POST',
+		options: {
+			auth: 'token',
+			validate: {
+				payload: {
+					text: Joi.string().required(),
+				},
+			},
+		},
+		path: '/post-auth',
+		handler: function (request, h) {
+	
+			return request.payload;
+		}
 	});
 
 	// Corre el servidor.

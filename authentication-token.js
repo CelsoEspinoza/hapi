@@ -4,7 +4,7 @@ async function authenticate(request, token) {
 	try {
         let isValid = false;
         const validToken = 'thisIsTheUniqueValidTokenAuthentication';
-		if (tokenStore === validToken) {
+		if (token === validToken) {
             isValid = true;
 			const credentials = {
                 firstName: 'Elon',
