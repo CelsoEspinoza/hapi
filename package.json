@@ -12,7 +12,9 @@
   ],
   "dependencies": {
     "bearer": "0.0.20",
+    "glue": "^6.0.0",
     "hapi-auth-bearer-token": "^6.1.1",
+    "hapi-axios": "^1.0.0",
     "hoek": "6.x.x",
     "isemail": "3.x.x",
     "topo": "3.x.x"
