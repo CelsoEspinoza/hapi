@@ -4,8 +4,6 @@ const Hapi = require('hapi');
 const Joi = require('joi');
 const validateToken = require('./authentication-token');
 const AuthBearer = require('hapi-auth-bearer-token');
-// const plugins = require('./plugin-register');
-// const HapiAxios = require('hapi-axios');
 
 async function initServer() {
 	// Los parámetros post y host son obligatorios.
@@ -18,7 +16,6 @@ async function initServer() {
 	// Server configurado.
 	const server = Hapi.server(options);
 
-	// Can't figure it out how to combine auth with plugins...
 	// Configura la autheticación
 	await server.register(AuthBearer);
 	server.auth.strategy('token', 'bearer-access-token', {
@@ -45,7 +42,7 @@ async function initServer() {
 	server.route({
 		method: 'POST',
 		options: {
-			auth: false,
+			auth: 'token',
 			validate: {
 				payload: {
 					text: Joi.string().required(),
@@ -61,7 +58,7 @@ async function initServer() {
 
 	// Corre el servidor.
 	await server.start();
-	console.log(`Server is running in: ${server.info.uri}`);
+	console.log(`Server is running at ${server.info.uri}`);
 }
 
 process.on('unhandledRejection', (err) => {

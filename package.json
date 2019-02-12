@@ -1,35 +1,21 @@
 {
-  "name": "joi",
-  "description": "Object schema validation",
-  "version": "14.3.1",
-  "homepage": "https://github.com/hapijs/joi",
-  "repository": "git://github.com/hapijs/joi",
-  "main": "lib/index.js",
-  "keywords": [
-    "hapi",
-    "schema",
-    "validation"
-  ],
+  "name": "hapi",
+  "version": "1.0.0",
+  "description": "Project for getting an upgrade APPRUNN",
+  "main": "server.js",
   "dependencies": {
-    "bearer": "0.0.20",
-    "glue": "^6.0.0",
-    "hapi-auth-bearer-token": "^6.1.1",
-    "hapi-axios": "^1.0.0",
-    "hoek": "6.x.x",
-    "isemail": "3.x.x",
-    "topo": "3.x.x"
+    "bearer": "^0.0.20",
+    "hapi-auth-bearer-token": "^6.1.1"
   },
-  "devDependencies": {
-    "code": "5.x.x",
-    "hapitoc": "1.x.x",
-    "lab": "18.x.x"
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CelsoEspinoza/hapi.git"
   },
-  "scripts": {
-    "test": "lab -t 100 -a code -L",
-    "test-debug": "lab -a code",
-    "test-cov-html": "lab -r html -o coverage.html -a code",
-    "toc": "hapitoc && node docs/check-errors-list.js",
-    "version": "npm run toc && git add API.md README.md"
+  "author": "Celso Espinoza",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CelsoEspinoza/hapi/issues"
   },
-  "license": "BSD-3-Clause"
+  "homepage": "https://github.com/CelsoEspinoza/hapi#readme"
 }
