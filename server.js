@@ -6,11 +6,16 @@ const validateToken = require('./authentication-token');
 const AuthBearer = require('hapi-auth-bearer-token');
 
 async function initServer() {
-	// Los parámetros post y host son obligatorios.
+	// Los parámetros port y host son obligatorios.
 	// 'app' se usa si deseas añadir configuración adicional, se puede omitir.
 	const options = {
 		port: 4000,
 		host: 'localhost',
+		routes: {
+			cors: {
+				origin: ['*'],
+			},
+		},
 		app: {},
 	};
 	// Server configurado.
@@ -51,7 +56,6 @@ async function initServer() {
 		},
 		path: '/post-auth',
 		handler: function (request, h) {
-	
 			return request.payload;
 		}
 	});
