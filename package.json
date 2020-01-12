@@ -4,10 +4,15 @@
   "description": "Project for getting an upgrade APPRUNN",
   "main": "server.js",
   "dependencies": {
-    "bearer": "^0.0.20",
-    "hapi-auth-bearer-token": "^6.1.1"
+    "bearer": "0.0.20",
+    "hapi-auth-bearer-token": "6.1.1",
+    "joi": "13.4.0",
+    "joi-date-extensions": "1.2.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "prettier": "1.13.6",
+    "prettier-eslint-cli": "4.7.1"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/CelsoEspinoza/hapi.git"
