@@ -10,7 +10,7 @@ async function initServer() {
 	// 'app' se usa si deseas añadir configuración adicional, se puede omitir.
 	const options = {
 		port: 4000,
-		host: 'localhost',
+		host: '0.0.0.0',
 		routes: {
 			cors: {
 				origin: ['*'],
